@@ -32,3 +32,10 @@ tbody tr{position:relative}tbody tr:hover{box-shadow:inset 3px 0 var(--lime)}tbo
 .emblem:has(img:not([style*="display: none"])) .mark-fallback{opacity:0}
 .icon-fallback .mark-fallback{opacity:1!important}
 @media(max-width:760px){.game-mark{padding:3px}.emblem{padding:10px}.emblem img{max-width:48px;max-height:48px}}
+
+.pagination{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;border-top:1px solid #242936;background:#0c0f15;color:#858c9c;font:10px var(--mono)}
+.pagination>div{display:flex;gap:7px}
+.pagination button{padding:7px 10px;border:1px solid #303645;border-radius:6px;background:#151923;color:#dce2ed;font-size:10px;transition:background .2s,border-color .2s,transform .2s}
+.pagination button:hover:not(:disabled){background:#202735;border-color:#536247;transform:translateY(-1px)}
+.pagination button:disabled{opacity:.35;cursor:not-allowed}
+@media(max-width:760px){.pagination{padding:11px 12px}.pagination button{padding:7px 8px}}
