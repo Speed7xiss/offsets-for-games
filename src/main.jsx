@@ -11,7 +11,22 @@ const GAMES=[
 {id:"fivem",name:"FiveM",mark:"FIV",color:"#e5a15a",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoywnDwmj8uB4NfI2i06TlIqV2SdLmjA_azjEaxrIZGg&s=10"},
 {id:"valorant",name:"VALORANT",mark:"VAL",color:"#ff6b7c",icon:"https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg"},
 {id:"pubg",name:"PUBG",mark:"PUBG",color:"#f2d16d",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT9j33O96LUzBYfysKHSZHDcVGfA2i04Xn_Xty5MDO9A&s=10"}];
-function flatten(x,prefix="",out=[]){if(Array.isArray(x)){if(!x.length)out.push({key:prefix||"value",value:"[]"});else x.forEach((v,i)=>flatten(v,`${prefix}[${i}]`,out));}else if(x&&typeof x==="object"){const entries=Object.entries(x);if(!entries.length)out.push({key:prefix||"value",value:"{}"});else for(const [k,v]of entries)flatten(v,prefix?prefix+"."+k:k,out)}else out.push({key:prefix||"value",value:x===null?"null":String(x)});return out}
+function flatten(x,prefix="",out=[],seen=new WeakSet()){
+ if(typeof x==="string"){
+  const text=x.trim();
+  if((text.startsWith("{")&&text.endsWith("}"))||(text.startsWith("[")&&text.endsWith("]"))){try{return flatten(JSON.parse(text),prefix,out,seen)}catch{}}
+  const lines=text.split(/\r?\n/).map(line=>line.trim()).filter(Boolean);
+  const pairs=lines.map(line=>{const m=line.match(/^["']?([^:=\s"']+)["']?\s*[:=]\s*(.*?)\s*,?$/);return m?{key:m[1],value:m[2].replace(/^["']|["']$/g,"")}:null});
+  if(lines.length>1&&pairs.filter(Boolean).length>=Math.ceil(lines.length*.6)){for(const p of pairs.filter(Boolean))flatten(p.value,prefix?prefix+"."+p.key:p.key,out,seen);return out}
+  out.push({key:prefix||"value",value:x});return out
+ }
+ if(x&&typeof x==="object"){
+  if(seen.has(x)){out.push({key:prefix||"value",value:"[circular]"});return out}seen.add(x);
+  if(Array.isArray(x)){if(!x.length)out.push({key:prefix||"value",value:"[]"});else x.forEach((v,i)=>flatten(v,`${prefix}[${i}]`,out,seen))}
+  else{const entries=Object.entries(x);if(!entries.length)out.push({key:prefix||"value",value:"{}"});else for(const [k,v]of entries)flatten(v,prefix?prefix+"."+k:k,out,seen)}
+ }else out.push({key:prefix||"value",value:x===null?"null":String(x)});
+ return out
+}
 function kind(key){if(/signature|pattern|createmove|getinaccuracy/i.test(key))return "Signature";if(/schema|m_iHealth|m_Armor/i.test(key))return "Schema";if(/offset|dw[A-Z]|address|pointer/i.test(key))return "Offset";return "Campo"}
 function shortValue(value){return value.length>180?value.slice(0,180)+"…":value}
 function App(){const[gameId,setGameId]=useState("cs2"),[tab,setTab]=useState("current"),[data,setData]=useState(null),[builds,setBuilds]=useState([]),[selected,setSelected]=useState(""),[search,setSearch]=useState(""),[loading,setLoading]=useState(false),[error,setError]=useState(""),[copied,setCopied]=useState(""),[updated,setUpdated]=useState(null);const game=GAMES.find(g=>g.id===gameId)||GAMES[0];
