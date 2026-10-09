@@ -39,3 +39,53 @@ tbody tr{position:relative}tbody tr:hover{box-shadow:inset 3px 0 var(--lime)}tbo
 .pagination button:hover:not(:disabled){background:#202735;border-color:#536247;transform:translateY(-1px)}
 .pagination button:disabled{opacity:.35;cursor:not-allowed}
 @media(max-width:760px){.pagination{padding:11px 12px}.pagination button{padding:7px 8px}}
+
+
+/* Interface polish: clearer hierarchy, responsive spacing and accessible focus states */
+:root{--line:#272d3b}
+::selection{background:#a8f36b35;color:#f5ffe9}
+:focus-visible{outline:2px solid #a8f36b!important;outline-offset:3px}
+.topbar{background:rgba(10,12,19,.88);box-shadow:0 8px 28px #00000012}
+.content{max-width:1320px}
+.hero{padding:23px 25px;margin:18px 0 22px;border:1px solid #292f3d;border-radius:14px;background:radial-gradient(ellipse at 88% 15%,color-mix(in srgb,var(--game) 11%,transparent),transparent 44%),linear-gradient(125deg,#121722,#0e1118 70%);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;left:0;top:18%;bottom:18%;width:2px;background:var(--game);box-shadow:0 0 18px color-mix(in srgb,var(--game) 65%,transparent)}
+.hero h1{font-size:clamp(30px,3.5vw,43px)}
+.hero p{max-width:610px}
+.emblem{width:112px;height:98px;border-radius:16px;flex-shrink:0}
+.stats{gap:14px}
+.stats article{border-radius:12px;padding:18px 19px 16px;background:linear-gradient(145deg,#141925,#10131a)}
+.panel{border-radius:14px}
+.panel-head{padding:22px 23px 18px}
+.toolbar{background:#0d1017}
+.search{transition:border-color .2s,box-shadow .2s,background .2s}
+.search:focus-within{background:#161b26}
+.build-select select{outline:none;transition:border-color .2s,box-shadow .2s}
+.build-select select:focus{border-color:#a8f36b;box-shadow:0 0 0 3px #a8f36b12}
+.copy{min-height:29px}
+.pagination{position:sticky;bottom:0;z-index:2;backdrop-filter:blur(12px)}
+.info article{transition:transform .2s,border-color .2s,background .2s}
+.info article:hover{transform:translateY(-2px);border-color:#394353;background:#131721}
+.repo,.github,.refresh,.tabs button,.game-link,.copy,.pagination button{ -webkit-tap-highlight-color:transparent}
+@media(max-width:760px){
+ .hero{padding:18px 16px;border-radius:12px;gap:12px}
+ .hero h1{font-size:29px;letter-spacing:-1px}
+ .hero p{line-height:1.65}
+ .emblem{width:66px;height:66px;border-radius:12px;padding:9px}
+ .stats{gap:8px}
+ .stats article{border-radius:10px}
+ .panel-head{align-items:flex-start;gap:10px}
+ .panel-head p{max-width:230px;line-height:1.6}
+ .refresh{padding:8px}
+ .content footer{line-height:1.6}
+}
+@media(max-width:420px){
+ .topbar{font-size:10px}
+ .live{font-size:9px}
+ .github{padding:7px 8px;font-size:10px}
+ .hero h1{font-size:26px}
+ .hero p{font-size:10px}
+ .stats label{letter-spacing:0}
+ .panel-head h2{font-size:14px}
+ .tabs button{padding:11px 6px}
+}
+@media(prefers-reduced-motion:reduce){.hero,.stats,.panel{animation:none!important}}
