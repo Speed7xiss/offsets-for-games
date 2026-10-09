@@ -17,3 +17,18 @@ tbody tr{position:relative}tbody tr:hover{box-shadow:inset 3px 0 var(--lime)}tbo
 @keyframes shimmerLoad{to{background-position:-200% 0}}.loading-shimmer{background:linear-gradient(90deg,#121722 25%,#1a2130 50%,#121722 75%);background-size:200% 100%;animation:shimmerLoad 1.5s infinite}
 @media(max-width:760px){.key-cell{min-width:125px}.value{max-width:44vw}.copy span{display:none}.table-wrap{max-height:70vh}}
 @media(prefers-reduced-motion:reduce){body{animation:none!important}.emblem,.emblem:before,.emblem:after{animation:none!important}}
+
+/* Game artwork */
+.game-mark{position:relative;overflow:hidden;padding:3px;background:#11151e;isolation:isolate}
+.game-mark img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;border-radius:4px;transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s;filter:saturate(1.08)}
+.game-mark .mark-fallback,.emblem .mark-fallback{position:absolute;inset:0;display:grid;place-items:center;z-index:0;font:700 10px var(--mono);color:var(--game)}
+.game-mark:has(img:not([style*="display: none"])) .mark-fallback{opacity:0}
+.game-link:hover .game-mark img{transform:scale(1.12);filter:drop-shadow(0 0 5px color-mix(in srgb,var(--game) 45%,transparent))}
+.game-link.selected .game-mark{background:#090c13;border-color:color-mix(in srgb,var(--game) 65%,#343947);box-shadow:0 0 18px color-mix(in srgb,var(--game) 15%,transparent)}
+.emblem{display:grid;place-items:center;padding:18px}
+.emblem img{position:relative;z-index:1;width:100%;height:100%;max-width:72px;max-height:72px;object-fit:contain;filter:drop-shadow(0 6px 14px color-mix(in srgb,var(--game) 18%,transparent));transition:transform .4s cubic-bezier(.2,.8,.2,1),filter .4s}
+.hero:hover .emblem img{transform:scale(1.08) rotate(-2deg);filter:drop-shadow(0 8px 20px color-mix(in srgb,var(--game) 35%,transparent))}
+.emblem .mark-fallback{font:700 23px var(--display);z-index:0}
+.emblem:has(img:not([style*="display: none"])) .mark-fallback{opacity:0}
+.icon-fallback .mark-fallback{opacity:1!important}
+@media(max-width:760px){.game-mark{padding:3px}.emblem{padding:10px}.emblem img{max-width:48px;max-height:48px}}
