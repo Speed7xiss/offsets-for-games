@@ -89,3 +89,14 @@ tbody tr{position:relative}tbody tr:hover{box-shadow:inset 3px 0 var(--lime)}tbo
  .tabs button{padding:11px 6px}
 }
 @media(prefers-reduced-motion:reduce){.hero,.stats,.panel{animation:none!important}}
+
+
+/* Rainbow Six artwork: light logo on a clean high-contrast tile */
+.game-r6 .game-mark{background:#f4f6fa;border-color:#d9deea}
+.game-r6 .game-mark img{object-fit:contain;filter:none;padding:2px}
+.game-r6.selected .game-mark{background:#fff;border-color:#8cc7ff;box-shadow:0 0 16px #8cc7ff24}
+.emblem-r6{background:linear-gradient(135deg,#f8faff,#e9edf5 70%);border-color:#d5dce9}
+.emblem-r6 img{max-width:100%;max-height:100%;width:100%;object-fit:contain;filter:none;z-index:2}
+.emblem-r6:before{opacity:.2}
+.emblem-r6:after{border-color:#8cc7ff55}
+@media(max-width:760px){.emblem-r6{padding:8px}.emblem-r6 img{max-width:100%;max-height:100%}}
