@@ -5,10 +5,10 @@ import"./styles.css";
 const GAMES=[
 {id:"cs2",name:"Counter-Strike 2",mark:"CS2",color:"#f3a64b",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmCVd7etKtMOCdhYGnM4kdr0Lqxjw6TJpPmKaba_ErZQ&s=10"},
 {id:"fortnite",name:"Fortnite",mark:"FN",color:"#a88cff",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQY5dHK4jUzXyqAfnoQQfSdh1w1F6E2CY0zYpF1_2-Cw&s=10"},
-{id:"r6",name:"Rainbow Six Siege",mark:"R6",color:"#8cc7ff",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3QZkPDazGrZ6z1t455EzFcsL0vPawPfQtctmlJYb-PQ&s=10"},
-{id:"rust",name:"Rust",mark:"R",color:"#ff8068",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDhVtBVkhKZLmNR41dmXGIgtwe4ywUcpYgiTgUOsrs0w&s=10"},
+{id:"r6",name:"Rainbow Six Siege",mark:"R6",color:"#8cc7ff",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNNgrDN35_OfxtKG00duywszhtIq8RQHgzQmkvRgKXnA&s=10"},
+{id:"rust",name:"Rust",mark:"R",color:"#ff8068",icon:"https://www.playrust.nl/wp-content/uploads/2017/02/Rust-Logo.jpg"},
 {id:"roblox",name:"Roblox",mark:"RBX",color:"#f0f2f8",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4gYfa1NsvldT41EjsLdkctiL254SjupLkVPiEeI5c-g&s=10"},
-{id:"fivem",name:"FiveM",mark:"FIV",color:"#e5a15a",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoywnDwmj8uB4NfI2i06TlIqV2SdLmjA_azjEaxrIZGg&s=10"},
+{id:"fivem",name:"FiveM",mark:"FIV",color:"#e5a15a",icon:"https://cdn.discordapp.com/attachments/1523801775767945349/1558238079712763934/image-removebg-preview.png?ex=6acab5cc&is=6ac9644c&hm=f7739aca188b03904971b6323dea108480100e7800fe1e190ad01744420b5e46"},
 {id:"valorant",name:"VALORANT",mark:"VAL",color:"#ff6b7c",icon:"https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg"},
 {id:"pubg",name:"PUBG",mark:"PUBG",color:"#f2d16d",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT9j33O96LUzBYfysKHSZHDcVGfA2i04Xn_Xty5MDO9A&s=10"}];
 function flatten(x,prefix="",out=[],seen=new WeakSet()){
